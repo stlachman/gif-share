@@ -1,5 +1,7 @@
 {
-  "env": {
-    "TENOR_KEY": "@tenor-key"
+  "build": {
+    "env": {
+      "TENOR_KEY": "@tenor-key"
+    }
   }
 }

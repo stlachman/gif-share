@@ -1,12 +1,14 @@
 import useSWR from "swr";
 import fetch from "unfetch";
-import Layout from "../components/Layout";
+import { useRouter } from "next/router";
+import Layout from "../../components/Layout";
 
 const fetcher = url => fetch(url).then(r => r.json());
 
-export default function Index() {
+const SearchResults = () => {
+  const router = useRouter();
   const { data, error } = useSWR(
-    `https://api.tenor.com/v1/trending?key=${process.env.TENOR_KEY}`,
+    `https://api.tenor.com/v1/search?q=${router.query.id}&key=${process.env.TENOR_KEY}`,
     fetcher
   );
 
@@ -15,7 +17,7 @@ export default function Index() {
 
   return (
     <Layout>
-      <h2>Gif Share</h2>
+      <h2>Search Results</h2>
       {data.results.length &&
         data.results.map(gif => {
           return (
@@ -26,4 +28,6 @@ export default function Index() {
         })}
     </Layout>
   );
-}
+};
+
+export default SearchResults;
