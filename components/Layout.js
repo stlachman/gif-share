@@ -1,18 +1,21 @@
+import styled from "@emotion/styled";
+
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20
-};
+const Main = styled("main")`
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1em;
+`;
 
 const Layout = ({ children }) => {
   return (
-    <div style={layoutStyle}>
+    <>
       <Header />
       <SearchBar />
-      {children}
-    </div>
+      <Main>{children}</Main>
+    </>
   );
 };
 
