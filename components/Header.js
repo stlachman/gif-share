@@ -8,18 +8,19 @@ const Container = styled("div")`
 `;
 const Nav = styled("nav")`
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
-
-const linkStyle = {
-  marginRight: 15
-};
 
 const Header = () => {
   return (
     <Container>
       <Nav>
         <Link href="/">
-          <a style={linkStyle}>Tenor</a>
+          <a>Tenor</a>
+        </Link>
+        <Link href="/profile">
+          <a>Profile</a>
         </Link>
       </Nav>
     </Container>

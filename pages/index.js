@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import fetch from "unfetch";
+import Link from "next/link";
 import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 
@@ -20,7 +21,7 @@ const fetcher = url => fetch(url).then(r => r.json());
 
 export default function Index() {
   const { data, error } = useSWR(
-    `https://api.tenor.com/v1/trending?key=${process.env.TENOR_KEY}`,
+    `https://api.tenor.com/v1/trending?key=${process.env.TENOR_KEY}&media_filter=minimal`,
     fetcher
   );
 
@@ -46,9 +47,11 @@ export default function Index() {
         {data.results.length &&
           data.results.map(gif => {
             return (
-              <div key={gif.id}>
-                <img src={gif.media[0].tinygif.url} alt={gif.id} />
-              </div>
+              <Link href={`/view/${gif.id}`} key={gif.id}>
+                <a>
+                  <img src={gif.media[0].tinygif.url} alt={gif.id} />
+                </a>
+              </Link>
             );
           })}
       </Grid>
