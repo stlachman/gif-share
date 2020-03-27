@@ -1,21 +1,7 @@
 import useSWR from "swr";
 import fetch from "unfetch";
-import Link from "next/link";
-import styled from "@emotion/styled";
 import Layout from "../components/Layout";
-
-const Grid = styled("div")`
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr;
-  @media (min-width: 650px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 940px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
+import GifList from "../components/GifList";
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -43,18 +29,7 @@ export default function Index() {
   return (
     <Layout>
       <h2>Gif Share</h2>
-      <Grid>
-        {data.results.length &&
-          data.results.map(gif => {
-            return (
-              <Link href={`/view/${gif.id}`} key={gif.id}>
-                <a>
-                  <img src={gif.media[0].tinygif.url} alt={gif.id} />
-                </a>
-              </Link>
-            );
-          })}
-      </Grid>
+      <GifList data={data.results} />
     </Layout>
   );
 }

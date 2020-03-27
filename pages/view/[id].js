@@ -28,24 +28,19 @@ const SearchResults = () => {
 
   if (error) return <Layout>failed to load</Layout>;
   if (!data) return <Layout>loading...</Layout>;
-  console.log(data);
+
   const regex = /[^/]+$/;
   const match = data.results[0].itemurl.match(regex)[0].split("-");
   const title = match.slice(0, match.length - 1).join(" ");
 
+  const media = data.results[0].media[0].gif.url;
+
   return (
     <Layout>
       <h2>{title}</h2>
-      <Grid>
-        {data.results.length &&
-          data.results.map(gif => {
-            return (
-              <div key={gif.id}>
-                <img src={gif.media[0].gif.url} alt={gif.id} />
-              </div>
-            );
-          })}
-      </Grid>
+      <div>
+        <img src={media} alt={title} />
+      </div>
     </Layout>
   );
 };
