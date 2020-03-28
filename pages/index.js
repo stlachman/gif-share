@@ -28,7 +28,7 @@ export default function Index() {
 
   return (
     <Layout>
-      <h2>Gif Share</h2>
+      <h2>Trending Gifs</h2>
       <GifList data={data.results} />
     </Layout>
   );
