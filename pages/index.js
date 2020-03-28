@@ -2,6 +2,7 @@ import useSWR from "swr";
 import fetch from "unfetch";
 import Layout from "../components/Layout";
 import GifList from "../components/GifList";
+import Loader from "../components/Loader";
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -19,11 +20,7 @@ export default function Index() {
     );
   }
   if (!data) {
-    return (
-      <Layout>
-        <h2>loading...</h2>
-      </Layout>
-    );
+    return <Loader />;
   }
 
   return (

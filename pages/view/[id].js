@@ -3,6 +3,7 @@ import fetch from "unfetch";
 import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import Layout from "../../components/Layout";
+import Loader from "../../components/Loader";
 
 const Grid = styled("div")`
   display: grid;
@@ -27,7 +28,7 @@ const SearchResults = () => {
   );
 
   if (error) return <Layout>failed to load</Layout>;
-  if (!data) return <Layout>loading...</Layout>;
+  if (!data) return <Loader />;
 
   const regex = /[^/]+$/;
   const match = data.results[0].itemurl.match(regex)[0].split("-");

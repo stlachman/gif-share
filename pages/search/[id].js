@@ -3,6 +3,7 @@ import fetch from "unfetch";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import GifList from "../../components/GifList";
+import Loader from "../../components/Loader";
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -14,7 +15,7 @@ const SearchResults = () => {
   );
 
   if (error) return <Layout>failed to load</Layout>;
-  if (!data) return <Layout>loading...</Layout>;
+  if (!data) return <Loader />;
 
   return (
     <Layout>
