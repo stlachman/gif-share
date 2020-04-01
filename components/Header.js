@@ -12,16 +12,27 @@ const Nav = styled("nav")`
   flex-wrap: wrap;
 `;
 
-const Header = () => {
+const Header = ({ user, loading }) => {
   return (
     <Container>
       <Nav>
         <Link href="/">
           <a>Tenor</a>
         </Link>
-        <Link href="/profile">
-          <a>Profile</a>
-        </Link>
+        {!loading && user ? (
+          <>
+            <Link href="/profile">
+              <a>Profile</a>
+            </Link>
+            <Link href="/api/logout">
+              <a>Logout</a>
+            </Link>
+          </>
+        ) : (
+          <Link href="/api/login">
+            <a>Login</a>
+          </Link>
+        )}
       </Nav>
     </Container>
   );

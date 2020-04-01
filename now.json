@@ -1,7 +1,14 @@
 {
   "build": {
     "env": {
-      "TENOR_KEY": "@tenor-key"
+      "TENOR_KEY": "@tenor-key",
+      "AUTH0_DOMAIN": "dev-28t7-2h3.auth0.com",
+      "AUTH0_CLIENT_ID": "mnvHljtX86B3mOYVaGg8or2JKjNg0Edy",
+      "AUTH0_CLIENT_SECRET": "@auth0_client_secret",
+      "REDIRECT_URI": "https://gif-share.now.sh/api/callback",
+      "POST_LOGOUT_REDIRECT_URI": "https://gif-share.now.sh/",
+      "SESSION_COOKIE_SECRET": "@session_cookie_secret",
+      "SESSION_COOKIE_LIFETIME": 7200
     }
   }
 }

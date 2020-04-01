@@ -9,10 +9,10 @@ const Main = styled("main")`
   padding: 0 1em;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ user, loading = false, children }) => {
   return (
     <>
-      <Header />
+      <Header user={user} loading={loading} />
       <SearchBar />
       <Main>{children}</Main>
     </>
